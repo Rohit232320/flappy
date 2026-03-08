@@ -15,21 +15,21 @@ android {
 
         externalNativeBuild {
             cmake {
-                // Ensure this matches your Raylib setup
-                cppFlags ""
+                arguments "-DPLATFORM=Android"
+                abiFilters 'armeabi-v7a', 'arm64-v8a'
             }
-        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
         }
     }
 
     externalNativeBuild {
         cmake {
             path "CMakeLists.txt"
+        }
+    }
+    
+    buildTypes {
+        release {
+            minifyEnabled false
         }
     }
 }
