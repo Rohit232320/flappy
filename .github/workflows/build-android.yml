@@ -21,8 +21,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.1
-          
-     - name: Build APK
+
+      - name: Build APK
+        # This matches the folder in your log: /home/runner/work/flappy/flappy/flappy/android
         working-directory: ./flappy/android
         run: gradle assembleDebug
 
@@ -30,5 +31,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: flappybird-apk
-          # Using a wildcard (**) helps GitHub find the file even if paths change
+          # The ** wildcard tells GitHub to search all subfolders for the APK
           path: "**/build/outputs/apk/debug/*.apk"
