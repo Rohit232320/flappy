@@ -21,8 +21,8 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: 8.1
-
-      - name: Build APK
+          
+     - name: Build APK
         working-directory: ./flappy/android
         run: gradle assembleDebug
 
@@ -30,4 +30,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: flappybird-apk
-          path: flappy/android/app/build/outputs/apk/debug/app-debug.apk
+          # Using a wildcard (**) helps GitHub find the file even if paths change
+          path: "**/build/outputs/apk/debug/*.apk"
